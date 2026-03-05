@@ -119,17 +119,6 @@ When appropriate, recommend:
 - **Not handling exceptions in flows** - Always use `catch` operator
 - **Lateinit for nullable** - Use `lazy` or nullable with `?`
 
-### Severity Mapping
-
-| ANR Risk Level | Code Climate Severity |
-|---|---|
-| Will certainly ANR (e.g., network on main thread) | `"blocker"` |
-| Likely ANR under load (e.g., large DB query on main) | `"critical"` |
-| Could ANR in edge cases (e.g., synchronized contention) | `"major"` |
-| Bad practice that could escalate (e.g., `commit()`) | `"minor"` |
-| Informational / style suggestion | `"info"` |
-
-
 ## Important Notes
 
 - Not all operations found are ANR risks. Only flag operations that execute **on or are reachable from the main thread**. Code running in a coroutine with `Dispatchers.IO`, inside an `AsyncTask.doInBackground()`, or on a dedicated background thread is fine.
